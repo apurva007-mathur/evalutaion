@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Manual scripting -->
+    <script src="/javascripts/product1.js"></script>
+    
+    
+    
+    <title>Home</title>
+</head>
+<style>
+body{
+        background-color: #ecf0f1;
+    }
+
+h4{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+}
+.list-group-flush{
+
+    font-size: 15px;
+    font-weight: bold;
+    color:rgb(12, 53, 12)
+}
+
+</style>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/home/displayhome">Products</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <!-- cart icon -->
+          <li class="nav-item dropdown">
+            <a class="nav-link me-3 me-lg-0  " href="/home/showcart" 
+              role="button"  aria-expanded="false">
+              <i class="fas fa-cart-plus"></i>
+              <span class="badge rounded-pill badge-notification" style="color: red; font-size: 15px;" id="cartcount"></span>
+            </a>
+          </li>
+           
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    
+      <div class="container">
+
+
+        <div class="d-flex justify-content-center container mt-5">
+            <div class="card p-3 bg-white" style="width:700px;">
+                <div class="about-product text-center mt-2"><img src="/images/<%=result[0].picture%>" width="300">
+                    <div>
+                        <h4><%=result[0].productname%></h4>
+                        <h6 class="mt-0 text-black-50"><%=result[0].productmodel%></h6>
+                    </div>
+                </div>
+                <div class="stats mt-2">
+                    <div class="d-flex justify-content-between p-price"><span><b>M.R.P</b> </span><span style="text-decoration:line-through; color:red ;"><b>Rs.<%=result[0].price%></b></span></div>
+                    <div class="d-flex justify-content-between p-price"><span><b>Discount</b></span><span style="color: green;"><b><%=result[0].discount%>%</b> </span></div>
+                    
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4"><span> <b> Price </b></span><span>
+                    <% var total = result[0].price - (result[0].price)*(result[0].discount/100) %>
+                    Rs.<%=total%>
+                 </span></div>
+                 <center> <button class="card-link btn btn-danger bi bi-cart-dash-fill cartbtn"
+                   id="cartbtn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16" name="btn" value="cart">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
+                  </svg>Add to cart</button></center>
+            </div>
+        </div>
+
+
+    </div>
+      
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/javascripts/product.js"></script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product interface</title>
+</head>
+<style>
+   body{
+        background-color: #ecf0f1;
+    }
+    .root {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .base {
+        width: 60%;
+        height: 30%;
+        background-color:#192a56;
+        border-radius: 2px;
+        margin-top: 50px;
+        padding: 25px;
+        font-family: 'Times New Roman', Times, serif;
+        color: white;
+    }
+
+    .head {
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+    }
+
+
+    a:visited {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+        width: 30px;
+
+    }
+    .gap{
+    margin-bottom:10px;
+    width: 100%;
+    }
+</style>
+<body >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/category/categoryinterface">Category <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/category/subcategoryinterface">Subcategory</a>
+            <a class="nav-item nav-link" href="/category/productinterface">Products</a>
+           
+          </div>
+        </div>
+      </nav>
+  <form action="/category/updateproduct" method="post" >
+      <input type="hidden"value="<%=result[0].productid%>" name="productid"> 
+    <div class="root">
+        
+        <div class="base">
+            
+            <form>
+                <div class="form-row">
+                   <div class="row gap">
+                       <div style="margin-left: 15px; font-size: 20px;font-weight: bolder;font-family: Georgia, 'Times New Roman', Times, serif;">
+                        Update Product
+                        <a href="/category/displayproduct" class="btn btn-danger" style="text-align:right;margin-left:445px;"> Display List</a>
+                       </div>
+                    </div>
+                     
+                   <div class="row gap" >
+                        <div class="col" >
+                            <input type="text" value="<%=result[0].productname%>" required name="Productname" class="form-control" placeholder="Product Name">
+                        </div>
+                  
+                    </div>
+                  <div class="row gap">
+                        <div class="col">
+                            <input type="text" value="<%=result[0].productmodel%>"required name="productmodel" class="form-control" placeholder="Product Model">
+                        </div>
+                  
+                  </div> 
+                  
+                    <div class="row gap">
+                        <div class="col">
+                            <select class="form-control" required id="category" name="categoryid"  >
+                              <option value="<%=result[0].categoryid %>"><%=result[0].categoryname%></option>
+                                </select>
+                          </div>
+                        <div class="col">
+                          <select class="form-control" required id="subcategory" name="subcategoryid" >
+                            <option value="<%=result[0].subcategoryid %>"><%=result[0].subcategoryname%></option>
+                              </select>
+                        </div>
+                      
+                    </div> 
+
+                    <div class="row gap">
+                        <div class="col">
+                            <input type="text" required name="stock" class="form-control" value="<%=result[0].stock%>"placeholder="price">
+                        </div>
+                        <div class="col">
+                            <input type="text" required name="discount" class="form-control" value="<%=result[0].discount%>"placeholder="Stock">
+                        </div>
+                        </div>
+                        
+                            
+                     <div class="row gap">
+                                <div class="col">
+                                    <input type="text" required name="price" class="form-control" value="<%=result[0].price%>"placeholder="price">
+                                </div>
+                                
+                                <div class="col">
+                                    <img src="/images/<%= result[0].picture %>" width="60"/>
+                                 </div>
+                               
+                                </div>
+                                <div class="row gap" style="margin-top: 5%;">
+                                    <div class="col" >
+                                        <button type="submit" value="update" name="btn"class="btn btn-primary">Update</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" value="delete" name="btn" class="btn btn-primary" >Delete</button>
+                                     </div>
+                                   
+                                    </div> 
+
+
+                            </div>
+                            <b><%=message%></b>
+            
+                        </div>
+                     
+                          </form>
+                          
+                    </div>
+                    
+            </body>
+            </form>
+            </html>

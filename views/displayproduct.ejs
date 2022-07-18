@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     body{
+        background-color: #ecf0f1;
+    }
+    .root {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .base {
+        width: 90%;
+        height: 40%;
+        background-color:#192a56;
+        border-radius: 2px;
+        margin-top: 50px;
+        padding: 25px;
+        font-family: 'Times New Roman', Times, serif;
+        color: white;
+    }
+
+    .head {
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+    }
+
+
+    a:visited {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+        width: 30px;
+
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/category/categoryinterface">Category <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/category/subcategoryinterface">Subcategory</a>
+            <a class="nav-item nav-link" href="/category/productinterface">Products</a>
+           
+          </div>
+        </div>
+      </nav>
+    <div class="root">
+        <div class="base">
+            <div class="row">
+                <div class="col" style=" width: 80px; margin-left: 318px;font-size: 20px;font-weight: bolder;font-family: Georgia, 'Times New Roman', Times, serif;"">
+                    <h2>Product List</h2>
+                </div>
+
+                <div class="col btn btn-danger " style=" margin-bottom: 2%;">
+                    <a href="/category/productinterface"> Add product</a>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="head" scope="col">ID</th>
+                        <th class="head" scope="col">Product Name</th>
+                        <th class="head" scope="col">Product Model</th>
+                        <th class="head" scope="col">Category</th>
+                        <th class="head" scope="col">Subcategory</th>
+                        <th class="head" scope="col">Stock</th>
+                        <th class="head" scope="col">Discount %</th>
+                        <th class="head" scope="col">Price</th>
+                        <th class="head" scope="col">Picture</th>
+                        <th class="head" scope="col">Update/Delete</th>
+                    </tr>
+                </thead>
+                <% if(result){ result.map((item)=>{ %>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <%= item.productid %>
+                            </th>
+                            <td scope="row">
+                                <%= item.productname %>
+                            </td>
+                            <td scope="row">
+                                <%= item.productmodel %>
+                            </td>
+                            <td scope="row">
+                                <%= item.categoryname %>
+                            </td>
+                            <td scope="row">
+                                <%= item.subcategoryname %>
+                            </td>
+                            <td scope="row">
+                                <%= item.stock %>
+                            </td>
+                            <td scope="row">
+                                <%= item.discount %>%
+                            </td>
+                            <td scope="row">
+                                <%= item.price%>
+                            </td>
+                            <td scope="row">
+                                <a href="/category/editpicture?productid=<%=item.productid%>&pname=<%=item.productname%>&picture=<%=item.picture%>">
+                                <img src='/images/<%= item.picture %>' width="40px"></a>
+                            </td>
+                            <th><a href="/category/displayproductbyid?productid=<%=item.productid%>"
+                                    class="btn btn-info">Edit/Delete</a></th>
+                        </tr>
+
+
+
+                        <% })} else { %>
+                            <h1>
+                                <%=msg%>
+                            </h1>
+                            <% } %>
+
+
+
+
+
+
+                    </tbody>
+            </table>
+</body>
+
+</html>

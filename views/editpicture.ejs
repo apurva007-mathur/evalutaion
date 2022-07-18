@@ -1,0 +1,13 @@
+<html>
+    <form action="/category/uploadnewimage" method="post" enctype="multipart/form-data">
+        <center>
+
+            <input type="hidden" value="<%=productid%>" name="productid">
+   <h1><%=pname%></h1>
+    <img src='/images/<%=picture%>' width="150"/><br><br><br>
+    <b>Select new image</b><br>
+    <span><input type="file" name="picture"></span> <span><input type="submit" required value="upload image"/></i></span>
+        </center>
+    </form>
+
+</html>
